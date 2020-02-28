@@ -42,15 +42,22 @@ const Card: FunctionComponent<CardProps> = ({
   if (matched) attributes["data-matched"] = matched;
   return (
     <div className="gr__card">
-      <button {...attributes} className="gr__card--button" onClick={clickHandler}>
+      <button
+        {...attributes}
+        className="gr__card--button"
+        onClick={clickHandler}
+      >
         {selected ? cardNumber : ""}
       </button>
       <ReactCardFlip isFlipped={selected} flipDirection="vertical">
-        <div className="gr__card--front">
-        </div>
+        <div className="gr__card--front"></div>
 
-        <div className="gr__card--back" style={{backgroundImage: `url(${booksPath}/${numberToBookMap[cardNumber]})`}}>
-        </div>
+        <div
+          className="gr__card--back"
+          style={{
+            backgroundImage: `url(${booksPath}/${numberToBookMap[cardNumber]})`
+          }}
+        ></div>
       </ReactCardFlip>
     </div>
   );
