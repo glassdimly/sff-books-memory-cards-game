@@ -12,7 +12,6 @@
 
 // See: https://github.com/facebook/create-react-app/issues/7325
 /* eslint-disable @typescript-eslint/no-use-before-define */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 
 const isLocalhost = Boolean(
   window.location.hostname === "localhost" ||

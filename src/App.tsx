@@ -51,6 +51,7 @@ function App() {
     }
 
     if (selectedSize === 1) {
+      // @ts-ignore @TODO fix typescript not liking how I get the first object in my set
       if (doArrayValsMatch([...selectedState][0], index, cardsState)) {
         setMatchedState(new Set(matchedState.add(cardNumber)));
       }
