@@ -1,23 +1,6 @@
 import React, { FunctionComponent, MouseEvent } from "react";
 import ReactCardFlip from "react-card-flip";
-
-const numberToBookMap = [
-  "altered-carbon.jpg",
-  "do-androids-dream-of-electric-sheep.jpg",
-  "hyperion.jpg",
-  "neuromancer.jpg",
-  "sparrow.jpg",
-  "ancillary-justice.jpg",
-  "dune.jpg",
-  "iron-dragons-daughter.jpg",
-  "permutation-city.jpg",
-  "windup-girl.jpg",
-  "dawn.png",
-  "feed.jpg",
-  "solaris.jpg"
-];
-
-const booksPath = "./img/books";
+import { getBooks, cardBack } from "./assets";
 
 type CardProps = {
   cardNumber: number;
@@ -37,20 +20,18 @@ const Card: FunctionComponent<CardProps> = ({
   cardNumber,
   clickHandler
 }) => {
+  // add useMemo to getBooks
   const attributes: CardHtmlAttributes = {};
   if (selected) attributes["data-selected"] = selected;
   if (matched) attributes["data-matched"] = matched;
   return (
-    <div className="gr__card">
-      <button {...attributes} className="gr__card--button" onClick={clickHandler}>
+    <div className="gr_cards--card" {...attributes}>
+      <button className="gr_cards--button" onClick={clickHandler}>
         {selected ? cardNumber : ""}
       </button>
       <ReactCardFlip isFlipped={selected} flipDirection="vertical">
-        <div className="gr__card--front">
-        </div>
-
-        <div className="gr__card--back" style={{backgroundImage: `url(${booksPath}/${numberToBookMap[cardNumber]})`}}>
-        </div>
+        <img className="gr_cards--card-side gr_cards--card-back" src={cardBack} />
+        <div className="gr_cards--card-side gr_cards--card-front" style={{backgroundImage: `url(${getBooks()[cardNumber]})`}}></div>
       </ReactCardFlip>
     </div>
   );

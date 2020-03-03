@@ -1,5 +1,5 @@
 import React, { MouseEvent, useState } from "react";
-import "./App.css";
+import "./App.scss";
 import Card from "./Card";
 import shuffle from "shuffle-array";
 
@@ -73,7 +73,7 @@ function App() {
 
   const loadingAttribute = isLoadingState ? { "data-loading": true } : {};
   return (
-    <div className="gr__card--container" {...loadingAttribute}>
+    <div className="gr_cards--container" {...loadingAttribute}>
       {cardsState.map((cardNumber, i) => (
         <Card
           key={`${cardNumber}--${i}`}
