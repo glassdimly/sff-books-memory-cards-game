@@ -2,6 +2,8 @@ import React, { MouseEvent, useState } from "react";
 import "./App.scss";
 import Card from "./Card";
 import shuffle from "shuffle-array";
+import useWindowSize from 'react-use/lib/useWindowSize'
+import Confetti from 'react-confetti'
 
 type cardArray = number[];
 
@@ -72,8 +74,15 @@ function App() {
   };
 
   const loadingAttribute = isLoadingState ? { "data-loading": true } : {};
+  // @TODO implement hasWon
+  const hasWon = matchedState.size === cardsState.length / 2;
+  const { width, height } = useWindowSize();
+  if (hasWon) {
+    setTimeout(shuffleCards, 10000)
+  }
   return (
     <>
+      {hasWon ? <Confetti width={width}  height={height}/> : ''}
       <div className="gr_cards--container" {...loadingAttribute}>
         {cardsState.map((cardNumber, i) => (
           <Card

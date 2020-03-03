@@ -19,8 +19,10 @@
     "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-card-flip": "^1.0.10",
+    "react-confetti": "^5.0.1",
     "react-dom": "^16.12.0",
     "react-scripts": "3.4.0",
+    "react-use": "^13.27.0",
     "shuffle-array": "^1.0.1",
     "typescript": "~3.7.2"
   },
