@@ -2,8 +2,8 @@ import React, { MouseEvent, useState } from "react";
 import "./App.scss";
 import Card from "./Card";
 import shuffle from "shuffle-array";
-import useWindowSize from 'react-use/lib/useWindowSize'
-import Confetti from 'react-confetti'
+import useWindowSize from "react-use/lib/useWindowSize";
+import Confetti from "react-confetti";
 
 type cardArray = number[];
 
@@ -53,7 +53,6 @@ function App() {
     }
 
     if (selectedSize === 1) {
-      // @ts-ignore @TODO fix typescript not liking how I get the first object in my set
       if (doArrayValsMatch([...selectedState][0], index, cardsState)) {
         setMatchedState(new Set(matchedState.add(cardNumber)));
       }
@@ -78,11 +77,14 @@ function App() {
   const hasWon = matchedState.size === cardsState.length / 2;
   const { width, height } = useWindowSize();
   if (hasWon) {
-    setTimeout(shuffleCards, 10000)
+    setTimeout(shuffleCards, 10000);
   }
   return (
     <div className="gr_cards">
-      {hasWon ? <Confetti width={width}  height={height}/> : ''}
+      <button className="gr_cards--shuffle-button" onClick={shuffleCards}>
+        <span className="gr_cards--shuffle-button-text">Shuffle</span>
+      </button>
+      {hasWon ? <Confetti width={width} height={height} /> : ""}
       <div className="gr_cards--container" {...loadingAttribute}>
         {cardsState.map((cardNumber, i) => (
           <Card
@@ -94,9 +96,7 @@ function App() {
           />
         ))}
       </div>
-      <button className="gr_cards--shuffle-button" onClick={shuffleCards}><span className="gr_cards--shuffle-button-text">Shuffle</span></button>
     </div>
-
   );
 }
 

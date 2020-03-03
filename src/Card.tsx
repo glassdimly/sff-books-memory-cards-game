@@ -29,9 +29,15 @@ const Card: FunctionComponent<CardProps> = ({
         {selected ? cardNumber : ""}
       </button>
       <ReactCardFlip isFlipped={selected || matched} flipDirection="vertical">
-        <img className="gr_cards--card-side gr_cards--card-back" src={cardBack} />
+        <img
+          className="gr_cards--card-side gr_cards--card-back"
+          src={cardBack}
+        />
         <div className="gr_cards--card-front--wrapper">
-          <img className="gr_cards--card-side gr_cards--card-front" src={getBooks()[cardNumber]} />
+          <img
+            className="gr_cards--card-side gr_cards--card-front"
+            src={getBooks()[cardNumber]}
+          />
         </div>
       </ReactCardFlip>
     </div>
