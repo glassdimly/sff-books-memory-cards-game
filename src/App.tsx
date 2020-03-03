@@ -81,7 +81,7 @@ function App() {
     setTimeout(shuffleCards, 10000)
   }
   return (
-    <>
+    <div className="gr_cards">
       {hasWon ? <Confetti width={width}  height={height}/> : ''}
       <div className="gr_cards--container" {...loadingAttribute}>
         {cardsState.map((cardNumber, i) => (
@@ -94,8 +94,8 @@ function App() {
           />
         ))}
       </div>
-      <button className="gr_cards--shuffle-button" onClick={shuffleCards}>Shuffle</button>
-    </>
+      <button className="gr_cards--shuffle-button" onClick={shuffleCards}><span className="gr_cards--shuffle-button-text">Shuffle</span></button>
+    </div>
 
   );
 }

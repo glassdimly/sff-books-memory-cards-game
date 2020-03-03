@@ -2,6 +2,9 @@
   text-align: center;
 }
 
+$box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+$box-shadow-raised: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -9,9 +12,15 @@
 }
 
 .gr_cards {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   &--container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 
     &[data-loading] .gr_cards--button:hover {
       cursor: default;
@@ -20,7 +29,7 @@
     &:not([data-loading]) .gr_cards--button:hover {
       cursor: pointer;
       & + div .gr_cards--card-side {
-        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        box-shadow: $box-shadow-raised;
       }
     }
 
@@ -61,7 +70,7 @@
 
   &--card-side {
     max-width: 100%;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-shadow: $box-shadow;
     transition: all 0.5s cubic-bezier(.25,.8,.25,1);
   }
 
@@ -87,8 +96,22 @@
 
   &--shuffle-button {
     margin: 10px;
+    font-size: 150%;
+    background-color: #1a184b;
+    color: white;
+    box-shadow: $box-shadow;
+    border: 5px white solid;
+    padding: 5px 10px;
+    text-align: center;
+    line-height: 1;
+    text-transform: uppercase;
+
     &:hover {
       cursor: pointer;
+      box-shadow: $box-shadow-raised;
+    }
+
+    &-text {
     }
   }
 }
