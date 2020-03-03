@@ -73,18 +73,21 @@ function App() {
 
   const loadingAttribute = isLoadingState ? { "data-loading": true } : {};
   return (
-    <div className="gr_cards--container" {...loadingAttribute}>
-      {cardsState.map((cardNumber, i) => (
-        <Card
-          key={`${cardNumber}--${i}`}
-          cardNumber={cardNumber}
-          clickHandler={handleCardClickWithCardInfo(cardNumber, i)}
-          selected={selectedState.has(i)}
-          matched={matchedState.has(cardNumber)}
-        />
-      ))}
-      <button onClick={shuffleCards}>Shuffle</button>
-    </div>
+    <>
+      <div className="gr_cards--container" {...loadingAttribute}>
+        {cardsState.map((cardNumber, i) => (
+          <Card
+            key={`${cardNumber}--${i}`}
+            cardNumber={cardNumber}
+            clickHandler={handleCardClickWithCardInfo(cardNumber, i)}
+            selected={selectedState.has(i)}
+            matched={matchedState.has(cardNumber)}
+          />
+        ))}
+      </div>
+      <button className="gr_cards--shuffle-button" onClick={shuffleCards}>Shuffle</button>
+    </>
+
   );
 }
 

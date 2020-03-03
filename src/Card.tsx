@@ -20,7 +20,6 @@ const Card: FunctionComponent<CardProps> = ({
   cardNumber,
   clickHandler
 }) => {
-  // add useMemo to getBooks
   const attributes: CardHtmlAttributes = {};
   if (selected) attributes["data-selected"] = selected;
   if (matched) attributes["data-matched"] = matched;
@@ -31,7 +30,9 @@ const Card: FunctionComponent<CardProps> = ({
       </button>
       <ReactCardFlip isFlipped={selected} flipDirection="vertical">
         <img className="gr_cards--card-side gr_cards--card-back" src={cardBack} />
-        <div className="gr_cards--card-side gr_cards--card-front" style={{backgroundImage: `url(${getBooks()[cardNumber]})`}}></div>
+        <div className="gr_cards--card-front--wrapper">
+          <img className="gr_cards--card-side gr_cards--card-front" src={getBooks()[cardNumber]} />
+        </div>
       </ReactCardFlip>
     </div>
   );
