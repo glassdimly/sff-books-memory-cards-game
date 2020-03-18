@@ -6,6 +6,7 @@ type CardProps = {
   cardNumber: number;
   selected: boolean;
   matched: boolean;
+  // @TODO support keyboard events, make accessible
   clickHandler: (e: MouseEvent<HTMLButtonElement>) => void;
 };
 
@@ -28,7 +29,10 @@ const Card: FunctionComponent<CardProps> = ({
       <button className="gr_cards--button" onClick={clickHandler}>
         {selected ? cardNumber : ""}
       </button>
+      {/* @TODO figure out what's wrong.
+      // @ts-ignore */}
       <ReactCardFlip isFlipped={selected || matched} flipDirection="vertical">
+        { /* @TODO implement srcset */ }
         <img
           className="gr_cards--card-side gr_cards--card-back"
           src={cardBack}

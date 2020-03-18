@@ -5,13 +5,15 @@ import shuffle from "shuffle-array";
 import useWindowSize from "react-use/lib/useWindowSize";
 import Confetti from "react-confetti";
 
-type cardArray = number[];
+type cardId = number;
+type cardIdArray = cardId[];
+type cardIndex = number;
 
-const defaultMatchedState: () => Set<any> = () => new Set();
-const defaultSelectedState: () => Set<any> = () => new Set();
+const defaultMatchedState: () => Set<cardId> = () => new Set();
+const defaultSelectedState: () => Set<cardIndex> = () => new Set();
 
-export const getNewCards = (): cardArray => {
-  let cards: cardArray = [];
+export const getNewCards = (): cardIdArray => {
+  let cards: cardIdArray = [];
   for (let i = 1; i <= 12; i++) {
     cards = [...cards, ...[i, i]];
   }
@@ -21,10 +23,10 @@ export const getNewCards = (): cardArray => {
 
 function App() {
   // @TODO use useReducer if this becomes more complicated.
-  const [selectedState, setSelectedState] = useState(defaultSelectedState);
-  const [matchedState, setMatchedState] = useState(defaultMatchedState);
-  const [cardsState, setCardsState] = useState(getNewCards());
-  const [isLoadingState, setIsLoadingState] = useState(false);
+  const [selectedState, setSelectedState] = useState<Set<cardId>>(defaultSelectedState);
+  const [matchedState, setMatchedState] = useState<Set<cardIndex>>(defaultMatchedState);
+  const [cardsState, setCardsState] = useState<cardIdArray>(getNewCards());
+  const [isLoadingState, setIsLoadingState] = useState<boolean>(false);
 
   const handleCardClickWithCardInfo = (cardNumber: number, index: number) => (
     e: MouseEvent<HTMLButtonElement>
@@ -32,7 +34,7 @@ function App() {
     const doArrayValsMatch = (
       i: number,
       secondI: number,
-      array: cardArray
+      array: cardIdArray
     ): boolean => (i === secondI ? false : array[i] === array[secondI]);
 
     if (isLoadingState) {
@@ -73,7 +75,6 @@ function App() {
   };
 
   const loadingAttribute = isLoadingState ? { "data-loading": true } : {};
-  // @TODO implement hasWon
   const hasWon = matchedState.size === cardsState.length / 2;
   const { width, height } = useWindowSize();
   if (hasWon) {
